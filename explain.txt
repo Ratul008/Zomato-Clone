@@ -1,0 +1,63 @@
+basic command 
+    db 
+        show dbs => list of DBS
+        use dbName => create / switch to other db
+        db (Global Object in mongoDB)
+        db.dropDatabase() => Delete db all collection
+
+    collection 
+        create => db.createCollection('locations')
+        list =>  show collections
+        delete => db.collectionName.drop()
+
+    document => Like JSObject => JSON => BSON => Binary JSON 
+
+        create/insert
+            single => db.locations.insertOne({})
+            multi => db.locations.insertMany([{...},{...},{...}])
+        read 
+            db.collectionName.find();({filter},{projection})
+            db.collectionName.find({city:"mumbai"},{location:1,location_id:1});
+        delete
+            db.collection.deleteOne(filter)
+        
+        update
+            operates => $set, $rename
+             db.collection.update(filte,{})
+
+    _id => unique + notNull => primary key
+
+    _id: ObjectId("63d4fb307986bdd573e318ae") => hex code 0 1 2 3 4 5 6 7 8 9 a b c d e f
+    ObjectId => document field type  
+
+    63d4fb30 7986bdd573 e318ae => 24 char i.e 12 Bytes
+            => (63d4fb30) A 4-byte timestamp, representing the ObjectId's creation, measured in seconds since the Unix epoch.
+            => (7986bdd573) A 5-byte random value generated once per process. This random value is unique to the machine and process
+            => (e318ae) A 3-byte incrementing counter, initialized to a random value.
+
+
+    MongoDB Driver 
+        => Lib "Mongoose"
+            => Async Lib
+            => Create Schema (Structure of collection) & Model
+            => location(name of collection) => city, id , location , location_id
+            => pre validation (before inserting  a data)
+
+    1st => import mongoose 
+    2 => connect to DB
+    3 => create a schema 
+    4 => create & export model
+
+
+
+    /save-order
+        order-list:[
+                {order-item:"paneer Masala',qty:3,price:100,total:300},
+                {order-item:"paneer Masala 2',qty:3,price:100,total:300}]
+        total:600,
+        user_email:"deepak@gmail.com",
+        mobile:98569854787,
+        order_id:777
+        payment_id:ABC_123,
+        order_status:true
+
